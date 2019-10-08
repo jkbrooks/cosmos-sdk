@@ -21,7 +21,7 @@ The simulation app has different commands, each of which tests a different failu
 - `AppImportExport`: The simulator exports the initial app state and then it creates a new app with the exported `genesis.json` as an input, checking for inconsistencies between the stores.
 - `AppSimulationAfterImport`: Queues two simulations together. The first one provides the app state (_i.e_ genesis) to the second. Useful to test software upgrades or hard-forks from a live chain.
 - `AppStateDeterminism`: Checks that all the nodes return the same values, in the same order.
-- `BenchmarkInvariants`: Analyses the performance of running all the modules' invariants (_i.e_ secuentially runs a [benchmark](https://golang.org/pkg/testing/#hdr-Benchmarks) test). An invariant checks for differences between the values that are on the store and the passive tracker. Eg: total coins held by accounts vs total supply tracker.
+- `BenchmarkInvariants`: Analyses the performance of running all the modules' invariants (_i.e_ sequentially runs a [benchmark](https://golang.org/pkg/testing/#hdr-Benchmarks) test). An invariant checks for differences between the values that are on the store and the passive tracker. Eg: total coins held by accounts vs total supply tracker.
 - `FullAppSimulation`: General simulation mode. Runs the chain and the specified operations for a given number of blocks. Tests that there're no `panics` on the simulation. It does also run invariant checks on every `Period` but they are not benchmarked.
 
 Each simulation must receive a set of inputs (_i.e_ flags) such as the number of blocks that the simulation is run, seed, block size, etc.
